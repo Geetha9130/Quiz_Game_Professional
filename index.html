@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101426">
+  <title>Quizora — Challenge Your Mind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Quizora home"><span class="brand-mark">Q</span><span>quizora<span class="brand-dot">.</span></span></a>
+    <div class="top-actions">
+      <span class="live-pill"><i></i> READY TO PLAY</span>
+      <button class="icon-btn" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">♫</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="screen active" id="setupScreen">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE DAILY BRAIN CHALLENGE</div>
+        <h1>Make every<br>second <span>count.</span></h1>
+        <p class="hero-sub">A little curiosity goes a long way. Pick your challenge, trust your instincts, and see what you know.</p>
+      </div>
+      <div class="setup-card">
+        <div class="card-heading"><div><span class="step-label">YOUR SESSION</span><h2>Set up your quiz</h2></div><div class="sparkle">✳</div></div>
+        <div class="field-grid">
+          <label class="field"><span>Category</span><select id="categorySelect"><option value="All">All categories</option></select></label>
+          <label class="field"><span>Difficulty</span><select id="difficultySelect"><option value="All">All levels</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
+          <label class="field"><span>Questions</span><select id="countSelect"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="15">15 questions</option><option value="20">20 questions</option></select></label>
+          <label class="field"><span>Time per question</span><select id="timeSelect"><option value="15">15 seconds</option><option value="20" selected>20 seconds</option><option value="30">30 seconds</option><option value="45">45 seconds</option></select></label>
+        </div>
+        <div class="session-note"><span class="note-icon">✦</span><span id="availableText">Loading question bank…</span></div>
+        <button class="primary-btn" id="startBtn" disabled>Start the challenge <span>↗</span></button>
+        <p class="micro-copy">No pressure. Just progress.</p>
+      </div>
+      <div class="feature-row">
+        <div class="feature"><span class="feature-icon purple">◷</span><div><b>Beat the clock</b><small>Stay sharp under pressure</small></div></div>
+        <div class="feature"><span class="feature-icon blue">✧</span><div><b>Learn as you go</b><small>Review every answer</small></div></div>
+        <div class="feature"><span class="feature-icon green">↗</span><div><b>Track your score</b><small>See how far you grow</small></div></div>
+      </div>
+    </section>
+
+    <section class="screen quiz-screen" id="quizScreen">
+      <div class="quiz-topline"><button class="text-btn" id="quitBtn">← Exit quiz</button><span class="quiz-category" id="quizCategory">SCIENCE</span><span class="question-count" id="questionCount">01 / 10</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="quiz-meta"><span id="difficultyBadge" class="difficulty-badge">EASY</span><div class="timer-wrap"><span class="timer-icon">◷</span><span id="timerText">20s</span></div></div>
+      <div class="timer-track"><div class="timer-fill" id="timerFill"></div></div>
+      <div class="question-area" id="questionArea">
+        <div class="question-kicker">QUESTION <span id="questionNumber">01</span></div>
+        <h2 id="questionText">Your question will appear here.</h2>
+        <p class="choose-copy">Choose the best answer</p>
+        <div class="options-grid" id="optionsGrid"></div>
+      </div>
+      <div class="quiz-footer"><span id="answeredText">0 answered</span><button class="primary-btn next-btn" id="nextBtn" disabled>Next question <span>→</span></button></div>
+    </section>
+
+    <section class="screen result-screen" id="resultScreen">
+      <div class="result-top"><span class="eyebrow"><span class="eyebrow-line"></span> CHALLENGE COMPLETE</span><span class="result-spark">✦</span></div>
+      <div class="result-heading"><h1 id="resultTitle">Nicely done!</h1><p id="resultMessage">Every question is a chance to learn something new.</p></div>
+      <div class="score-card">
+        <div class="score-ring" id="scoreRing"><div><strong id="scorePercent">0%</strong><small>YOUR SCORE</small></div></div>
+        <div class="score-stats"><div><span class="stat-dot correct-dot"></span><div><strong id="correctCount">0</strong><small>Correct</small></div></div><div><span class="stat-dot wrong-dot"></span><div><strong id="wrongCount">0</strong><small>Incorrect / skipped</small></div></div><div><span class="stat-dot neutral-dot"></span><div><strong id="totalCount">0</strong><small>Total questions</small></div></div></div>
+      </div>
+      <div class="result-actions"><button class="primary-btn" id="reviewBtn">Review answers <span>↓</span></button><button class="secondary-btn" id="playAgainBtn">Play again ↗</button></div>
+      <div class="review-panel hidden" id="reviewPanel"><div class="review-heading"><div><span class="step-label">LEARN FROM THE ROUND</span><h2>Answer review</h2></div><span id="reviewSummary"></span></div><div id="reviewList"></div></div>
+    </section>
+    <footer class="page-footer"><span>QUIZORA © 2026</span><span>BUILT FOR CURIOUS MINDS</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
